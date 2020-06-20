@@ -1,1 +1,1 @@
-web: java -jar target/FirstDemoApp-0.0.1-SNAPSHOT.jar
+web: java -jar target/FirstDemoAppLLL-0.0.1-SNAPSHOT.jar
