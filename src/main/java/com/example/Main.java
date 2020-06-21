@@ -45,7 +45,7 @@ public class Main {
 		RelativisticModel.select();
 		String energy = System.getenv().get("ENERGY");
 		if (energy == null) {
-			energy = "12 GeV";
+			energy = "72 GeV";
 		}
 		Amount<Mass> m = Amount.valueOf(energy).to(KILOGRAM);
 		// model.put("science", "E=mc^2: 12 GeV = " + m.toString());
