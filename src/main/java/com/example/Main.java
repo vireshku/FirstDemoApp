@@ -28,15 +28,29 @@ import static javax.measure.unit.SI.KILOGRAM;
 @SpringBootApplication
 public class Main {
 
-  @Value("${spring.datasource.url}")
-  private String dbUrl;
+	@Value("${spring.datasource.url}")
+	private String dbUrl;
 
-  public static void main(String[] args) throws Exception {
-    SpringApplication.run(Main.class, args);
-  }
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Main.class, args);
+	}
 
-  @RequestMapping("/")
-  String index() {
-    return "index";
-  }
+	@RequestMapping("/")
+	String index() {
+		return "index";
+	}
+
+	@RequestMapping("/confdemo")
+	String hello(Map<String, Object> model) {
+		RelativisticModel.select();
+		String energy = System.getenv().get("ENERGY");
+		if (energy == null) {
+			energy = "12 GeV";
+		}
+		Amount<Mass> m = Amount.valueOf(energy).to(KILOGRAM);
+		// model.put("science", "E=mc^2: 12 GeV = " + m.toString());
+		model.put("science", "E=mc^2: " + energy + " = " + m.toString());
+		return "hello";
+	}
+
 }
